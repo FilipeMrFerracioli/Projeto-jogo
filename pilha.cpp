@@ -1,6 +1,6 @@
 #include "pilha.h"
 
-namespace lambancinha {
+namespace minhaNamespace {
 
 Pilha::Pilha(int tamanho):
     topo(-1),

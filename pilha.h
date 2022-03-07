@@ -3,7 +3,7 @@
 
 #include <QString>
 
-namespace lambancinha {
+namespace minhaNamespace {
 class Pilha
 {
 private:
