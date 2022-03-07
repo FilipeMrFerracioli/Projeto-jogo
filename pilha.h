@@ -19,6 +19,7 @@ public:
     bool estaCheia() const;
     bool estaVazia() const;
     int quantidadeElementos() const;
+    QString getPilha() const;
 };
 }
 

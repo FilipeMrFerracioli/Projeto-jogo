@@ -32,8 +32,10 @@ private slots:
 
     void on_pushButtonCB_clicked();
 
+    void on_pushButtonCriarJogo_clicked();
+
 private:
     Ui::MainWindow *ui;
-    minhaNamespace::Jogo jogo;
+    minhaNamespace::Jogo *jogo;
 };
 #endif // MAINWINDOW_H

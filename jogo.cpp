@@ -31,28 +31,134 @@ Jogo::~Jogo(){
     if(torreC) delete torreC;
 }
 
-void Jogo::jogadaAB() const{
-
+int Jogo::getQuantidadeJogadas() const{
+    return quantidadeJogadas;
 }
 
-void Jogo::jogadaAC() const{
-
+void Jogo::setQuantidadeJogadas(int elemento){
+    quantidadeJogadas = elemento;
 }
 
-void Jogo::jogadaBA() const{
-
+int Jogo::getQuantidadeDiscos() const{
+    return quantidadeDiscos;
 }
 
-void Jogo::jogadaBC() const{
-
+void Jogo::setQuantidadeDiscos(int elemento){
+    quantidadeDiscos = elemento;
 }
 
-void Jogo::jogadaCA() const{
+void Jogo::jogadaAB(){
+    quantidadeJogadas++;
 
+    if(torreB->estaCheia()) throw QString("Torre B está cheia!");
+
+    if(torreB->estaVazia()) {
+        int valor = torreA->acessar();
+        torreA->retirar();
+        torreB->inserir(valor);
+        return;
+    }
+
+    if(torreB->acessar() < torreA->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = torreA->acessar();
+    torreA->retirar();
+    torreB->inserir(valor);
 }
 
-void Jogo::jogadaCB() const{
+void Jogo::jogadaAC(){
+    quantidadeJogadas++;
 
+    if(torreC->estaCheia()) throw QString("Torre C está cheia!");
+
+    if(torreC->estaVazia()) {
+        int valor = torreA->acessar();
+        torreA->retirar();
+        torreC->inserir(valor);
+        return;
+    }
+
+    if(torreC->acessar() < torreA->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = torreA->acessar();
+    torreA->retirar();
+    torreC->inserir(valor);
+}
+
+void Jogo::jogadaBA(){
+    quantidadeJogadas++;
+
+    if(torreA->estaCheia()) throw QString("Torre A está cheia!");
+
+    if(torreA->estaVazia()) {
+        int valor = torreB->acessar();
+        torreB->retirar();
+        torreA->inserir(valor);
+        return;
+    }
+
+    if(torreA->acessar() < torreB->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = torreB->acessar();
+    torreB->retirar();
+    torreA->inserir(valor);
+}
+
+void Jogo::jogadaBC(){
+    quantidadeJogadas++;
+
+    if(torreC->estaCheia()) throw QString("Torre C está cheia!");
+
+    if(torreC->estaVazia()) {
+        int valor = torreB->acessar();
+        torreB->retirar();
+        torreC->inserir(valor);
+        return;
+    }
+
+    if(torreC->acessar() < torreB->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = torreB->acessar();
+    torreB->retirar();
+    torreC->inserir(valor);
+}
+
+void Jogo::jogadaCA(){
+    quantidadeJogadas++;
+
+    if(torreA->estaCheia()) throw QString("Torre A está cheia!");
+
+    if(torreA->estaVazia()) {
+        int valor = torreC->acessar();
+        torreC->retirar();
+        torreA->inserir(valor);
+        return;
+    }
+
+    if(torreA->acessar() < torreC->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = torreC->acessar();
+    torreC->retirar();
+    torreA->inserir(valor);
+}
+
+void Jogo::jogadaCB(){
+    quantidadeJogadas++;
+
+    if(torreB->estaCheia()) throw QString("Torre B está cheia!");
+
+    if(torreB->estaVazia()) {
+        int valor = torreC->acessar();
+        torreC->retirar();
+        torreB->inserir(valor);
+        return;
+    }
+
+    if(torreB->acessar() < torreC->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = torreC->acessar();
+    torreC->retirar();
+    torreB->inserir(valor);
 }
 
 }

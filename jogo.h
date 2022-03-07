@@ -18,16 +18,16 @@ public:
     ~Jogo();
 
     int getQuantidadeJogadas() const;
-    void setQuantidadeJogadas();
+    void setQuantidadeJogadas(int);
     int getQuantidadeDiscos() const;
-    void setQuantidadeDiscos();
+    void setQuantidadeDiscos(int);
 
-    void jogadaAB() const;
-    void jogadaAC() const;
-    void jogadaBA() const;
-    void jogadaBC() const;
-    void jogadaCA() const;
-    void jogadaCB() const;
+    void jogadaAB();
+    void jogadaAC();
+    void jogadaBA();
+    void jogadaBC();
+    void jogadaCA();
+    void jogadaCB();
 };
 }
 

@@ -47,4 +47,13 @@ int Pilha::quantidadeElementos() const{
     return topo + 1;
 }
 
+QString Pilha::getPilha() const{
+    QString saida = "";
+    if(estaCheia()) return saida;
+    for(int i = topo; i <= 0; i--){
+        saida += QString::number(vetor[i]) + "\n";
+    }
+    return saida;
+}
+
 }
