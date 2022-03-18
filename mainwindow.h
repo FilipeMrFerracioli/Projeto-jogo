@@ -6,6 +6,7 @@
 #include <jogo.h>
 #include <QMessageBox>
 #include <QString>
+#include <pilha.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

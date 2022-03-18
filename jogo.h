@@ -28,6 +28,16 @@ public:
     void jogadaBC();
     void jogadaCA();
     void jogadaCB();
+
+    QString getTorreA() const;
+    QString getTorreB() const;
+    QString getTorreC() const;
+
+    // método único
+
+    //Pilha* jogada(Pilha const * const pilhaObj);
+
+    // getJodada
 };
 }
 

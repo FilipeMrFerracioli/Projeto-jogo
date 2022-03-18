@@ -50,8 +50,6 @@ void Jogo::setQuantidadeDiscos(int elemento){
 void Jogo::jogadaAB(){
     quantidadeJogadas++;
 
-    if(torreB->estaCheia()) throw QString("Torre B está cheia!");
-
     if(torreB->estaVazia()) {
         int valor = torreA->acessar();
         torreA->retirar();
@@ -68,8 +66,6 @@ void Jogo::jogadaAB(){
 
 void Jogo::jogadaAC(){
     quantidadeJogadas++;
-
-    if(torreC->estaCheia()) throw QString("Torre C está cheia!");
 
     if(torreC->estaVazia()) {
         int valor = torreA->acessar();
@@ -88,8 +84,6 @@ void Jogo::jogadaAC(){
 void Jogo::jogadaBA(){
     quantidadeJogadas++;
 
-    if(torreA->estaCheia()) throw QString("Torre A está cheia!");
-
     if(torreA->estaVazia()) {
         int valor = torreB->acessar();
         torreB->retirar();
@@ -106,8 +100,6 @@ void Jogo::jogadaBA(){
 
 void Jogo::jogadaBC(){
     quantidadeJogadas++;
-
-    if(torreC->estaCheia()) throw QString("Torre C está cheia!");
 
     if(torreC->estaVazia()) {
         int valor = torreB->acessar();
@@ -126,8 +118,6 @@ void Jogo::jogadaBC(){
 void Jogo::jogadaCA(){
     quantidadeJogadas++;
 
-    if(torreA->estaCheia()) throw QString("Torre A está cheia!");
-
     if(torreA->estaVazia()) {
         int valor = torreC->acessar();
         torreC->retirar();
@@ -145,7 +135,6 @@ void Jogo::jogadaCA(){
 void Jogo::jogadaCB(){
     quantidadeJogadas++;
 
-    if(torreB->estaCheia()) throw QString("Torre B está cheia!");
 
     if(torreB->estaVazia()) {
         int valor = torreC->acessar();
@@ -160,6 +149,29 @@ void Jogo::jogadaCB(){
     torreC->retirar();
     torreB->inserir(valor);
 }
+
+QString Jogo::getTorreA() const{
+    if(torreA->estaVazia()) return "";
+    return torreA->getPilha();
+}
+
+QString Jogo::getTorreB() const{
+    if(torreB->estaVazia()) return "";
+    return torreB->getPilha();
+}
+
+QString Jogo::getTorreC() const{
+    if(torreC->estaVazia()) return "";
+    return torreC->getPilha();
+}
+
+/*Pilha* Jogo::jogada(Pilha const * const pilhaObj){
+    quantidadeJogadas++;
+
+    if(pilhaObj->estaVazia()) {
+        int valor = this->torreA->acessar();
+    }
+}*/
 
 }
 
