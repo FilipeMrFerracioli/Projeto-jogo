@@ -10,7 +10,7 @@ Jogo::Jogo(int quantidadeDiscos):
     torreC(0)
 {
     try {
-        if(quantidadeDiscos < 3) throw QString("Quantidade de discos não ser < 3!");
+        if(quantidadeDiscos < 3) throw QString("Quantidade de discos não pode ser < 3!");
 
         torreA = new Pilha(quantidadeDiscos);
         torreB = new Pilha(quantidadeDiscos);
@@ -35,10 +35,6 @@ int Jogo::getQuantidadeJogadas() const{
     return quantidadeJogadas;
 }
 
-void Jogo::setQuantidadeJogadas(int elemento){
-    quantidadeJogadas = elemento;
-}
-
 int Jogo::getQuantidadeDiscos() const{
     return quantidadeDiscos;
 }
@@ -47,107 +43,78 @@ void Jogo::setQuantidadeDiscos(int elemento){
     quantidadeDiscos = elemento;
 }
 
-void Jogo::jogadaAB(){
-    quantidadeJogadas++;
+/*QString Jogo::jogadaAB()
+{
+    fazerJogada(torreA, torreB);
 
-    if(torreB->estaVazia()) {
-        int valor = torreA->acessar();
-        torreA->retirar();
-        torreB->inserir(valor);
-        return;
-    }
 
-    if(torreB->acessar() < torreA->acessar()) throw QString("Disco maior não pode ir por cima!");
 
-    int valor = torreA->acessar();
-    torreA->retirar();
-    torreB->inserir(valor);
+    return torreB->getPilha();
 }
 
-void Jogo::jogadaAC(){
-    quantidadeJogadas++;
+QString Jogo::jogadaAC()
+{
+    fazerJogada(torreA, torreC);
 
-    if(torreC->estaVazia()) {
-        int valor = torreA->acessar();
-        torreA->retirar();
-        torreC->inserir(valor);
-        return;
-    }
-
-    if(torreC->acessar() < torreA->acessar()) throw QString("Disco maior não pode ir por cima!");
-
-    int valor = torreA->acessar();
-    torreA->retirar();
-    torreC->inserir(valor);
+    return torreC->getPilha();
 }
 
-void Jogo::jogadaBA(){
-    quantidadeJogadas++;
+QString Jogo::jogadaBA()
+{
+    fazerJogada(torreB, torreA);
 
-    if(torreA->estaVazia()) {
-        int valor = torreB->acessar();
-        torreB->retirar();
-        torreA->inserir(valor);
-        return;
-    }
-
-    if(torreA->acessar() < torreB->acessar()) throw QString("Disco maior não pode ir por cima!");
-
-    int valor = torreB->acessar();
-    torreB->retirar();
-    torreA->inserir(valor);
+    return torreA->getPilha();
 }
 
-void Jogo::jogadaBC(){
-    quantidadeJogadas++;
+QString Jogo::jogadaBC()
+{
+    fazerJogada(torreB, torreC);
 
-    if(torreC->estaVazia()) {
-        int valor = torreB->acessar();
-        torreB->retirar();
-        torreC->inserir(valor);
-        return;
-    }
-
-    if(torreC->acessar() < torreB->acessar()) throw QString("Disco maior não pode ir por cima!");
-
-    int valor = torreB->acessar();
-    torreB->retirar();
-    torreC->inserir(valor);
+    return torreC->getPilha();
 }
 
-void Jogo::jogadaCA(){
-    quantidadeJogadas++;
+QString Jogo::jogadaCA()
+{
+    fazerJogada(torreC, torreA);
 
-    if(torreA->estaVazia()) {
-        int valor = torreC->acessar();
-        torreC->retirar();
-        torreA->inserir(valor);
-        return;
-    }
-
-    if(torreA->acessar() < torreC->acessar()) throw QString("Disco maior não pode ir por cima!");
-
-    int valor = torreC->acessar();
-    torreC->retirar();
-    torreA->inserir(valor);
+    return torreA->getPilha();
 }
 
-void Jogo::jogadaCB(){
-    quantidadeJogadas++;
+QString Jogo::jogadaCB()
+{
+    fazerJogada(torreC, torreB);
 
+    return torreB->getPilha();
+}*/
 
-    if(torreB->estaVazia()) {
-        int valor = torreC->acessar();
-        torreC->retirar();
-        torreB->inserir(valor);
-        return;
-    }
+void Jogo::jogadaAB()
+{
+    fazerJogada(torreA, torreB);
+}
 
-    if(torreB->acessar() < torreC->acessar()) throw QString("Disco maior não pode ir por cima!");
+void Jogo::jogadaAC()
+{
+    fazerJogada(torreA, torreC);
+}
 
-    int valor = torreC->acessar();
-    torreC->retirar();
-    torreB->inserir(valor);
+void Jogo::jogadaBA()
+{
+    fazerJogada(torreB, torreA);
+}
+
+void Jogo::jogadaBC()
+{
+    fazerJogada(torreB, torreC);
+}
+
+void Jogo::jogadaCA()
+{
+    fazerJogada(torreC, torreA);
+}
+
+void Jogo::jogadaCB()
+{
+    fazerJogada(torreC, torreB);
 }
 
 QString Jogo::getTorreA() const{
@@ -165,13 +132,23 @@ QString Jogo::getTorreC() const{
     return torreC->getPilha();
 }
 
-/*Pilha* Jogo::jogada(Pilha const * const pilhaObj){
+void Jogo::fazerJogada(Pilha *objPilha1, Pilha *objPilha2)
+{
     quantidadeJogadas++;
 
-    if(pilhaObj->estaVazia()) {
-        int valor = this->torreA->acessar();
+    if(objPilha2->estaVazia()) {
+        int valor = objPilha1->acessar();
+        objPilha1->retirar();
+        objPilha2->inserir(valor);
+        return;
     }
-}*/
+
+    if(objPilha2->acessar() < objPilha1->acessar()) throw QString("Disco maior não pode ir por cima!");
+
+    int valor = objPilha1->acessar();
+    objPilha1->retirar();
+    objPilha2->inserir(valor);
+}
 
 }
 

@@ -13,14 +13,23 @@ private:
     Pilha *torreA;
     Pilha *torreB;
     Pilha *torreC;
+
+    void fazerJogada(Pilha *objPilha1, Pilha *objPilha2);
+    QString getTorre(Pilha *objPilha) const;
 public:
     Jogo(int quantidadeDiscos);
     ~Jogo();
 
     int getQuantidadeJogadas() const;
-    void setQuantidadeJogadas(int);
     int getQuantidadeDiscos() const;
     void setQuantidadeDiscos(int);
+
+    /*QString jogadaAB();
+    QString jogadaAC();
+    QString jogadaBA();
+    QString jogadaBC();
+    QString jogadaCA();
+    QString jogadaCB();*/
 
     void jogadaAB();
     void jogadaAC();
@@ -32,12 +41,6 @@ public:
     QString getTorreA() const;
     QString getTorreB() const;
     QString getTorreC() const;
-
-    // método único
-
-    //Pilha* jogada(Pilha const * const pilhaObj);
-
-    // getJodada
 };
 }
 
